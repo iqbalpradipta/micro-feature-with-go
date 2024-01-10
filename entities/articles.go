@@ -1,11 +1,20 @@
 package entities
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
+
+
 
 type Articles struct {
-	ID				uint		`gorm:"primaryKey"`
-	title			string
-	date			*time.Time
-	image			string
-	description 	string
+	gorm.Model
+	ID				uint		`json:"id" gorm:"primaryKey"`
+	Title			string		`json:"title"`
+	Date			*time.Time	`json:"date"`
+	Image			string		`json:"image"`
+	Description 	string		`json:"description"`
+	Created_At		time.Time
+	Updated_At		time.Time
 }
