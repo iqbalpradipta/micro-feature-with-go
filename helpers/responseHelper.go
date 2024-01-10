@@ -2,7 +2,7 @@ package helpers
 
 func FailedResponse(response string) map[string]interface{}  {
 	return map[string]interface{}{
-		"code": 500,
+		"code": "Failed",
 		"messages": response,
 	}
 }

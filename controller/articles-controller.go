@@ -34,5 +34,5 @@ func (cr *controllerArticle) GetArticleById(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, helpers.FailedResponse(err.Error()))
 	}
 
-	return c.JSON(http.StatusOK, helpers.SuccessResponse("Get article Success", articles))
+	return c.JSON(http.StatusOK, helpers.SuccessResponse("Get article By Id Success", articles))
 }

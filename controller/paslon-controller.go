@@ -27,11 +27,11 @@ func (cr *controllerPaslon) GetPaslon(c echo.Context) error {
 }
 
 func (cr *controllerPaslon) GetPaslonById(c echo.Context) error {
-	id, _ := strconv.Atoi("id")
+	id, _ := strconv.Atoi(c.Param("id"))
 	paslon, err := cr.PaslonRepository.GetPaslonById(id)
 	if err != nil {
-		return c.JSON(http.StatusOK, helpers.FailedResponse(err.Error()))
+		return c.JSON(http.StatusInternalServerError, helpers.FailedResponse(err.Error()))
 	}
 
-	return c.JSON(http.StatusOK, helpers.SuccessResponse("Get paslon Success", paslon))
+	return c.JSON(http.StatusOK, helpers.SuccessResponse("Get paslon By Id Success", paslon))
 }
