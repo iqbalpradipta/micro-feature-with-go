@@ -20,16 +20,10 @@ func ArticlesController(articleServices service.ArticleService) *controllerArtic
 func (cr *controllerArticle) GetArticle(c echo.Context) error {
 	articles, err := cr.ArticleRepository.GetArticle()
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, helpers.FailedResponse{
-			Messages: err.Error(),
-			Code: http.StatusInternalServerError,
-		})
+		return c.JSON(http.StatusInternalServerError, helpers.FailedResponse(err.Error()))
 	}
 
-	return c.JSON(http.StatusOK, helpers.SuccessResponse{
-		Messages: "Success Get Article",
-		Data: articles,
-	})
+	return c.JSON(http.StatusOK, helpers.SuccessResponse("Get article Success", articles))
 }
 
 func (cr *controllerArticle) GetArticleById(c echo.Context) error {
@@ -37,14 +31,8 @@ func (cr *controllerArticle) GetArticleById(c echo.Context) error {
 	articles, err := cr.ArticleRepository.GetArticleById(id)
 
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, helpers.FailedResponse{
-			Messages: err.Error(),
-			Code: http.StatusInternalServerError,
-		})
+		return c.JSON(http.StatusInternalServerError, helpers.FailedResponse(err.Error()))
 	}
 
-	return c.JSON(http.StatusOK, helpers.SuccessResponse{
-		Messages: "Succes get Article By id",
-		Data: articles,
-	})
+	return c.JSON(http.StatusOK, helpers.SuccessResponse("Get article Success", articles))
 }

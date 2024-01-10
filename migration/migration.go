@@ -8,6 +8,7 @@ import (
 func RunMigration()  {
 	err := config.DB.AutoMigrate(
 		&entities.Articles{},
+		&entities.Paslon{},
 	)
 
 	if err != nil {

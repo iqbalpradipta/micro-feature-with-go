@@ -10,8 +10,19 @@ import (
 
 func Routes(e *echo.Group) {
 
-	r := service.RepositoryArticle(config.DB)
-	cr := controller.ArticlesController(r)
+	// Article
+	ra := service.RepositoryArticle(config.DB)
+	cra := controller.ArticlesController(ra)
 
-	e.GET("/articles", cr.GetArticle)
+	e.GET("/articles", cra.GetArticle)
+	e.GET("/articles/:id", cra.GetArticleById)
+
+	// Paslon
+	rp := service.RepositoryPaslon(config.DB)
+	crp := controller.PaslonController(rp)
+
+	e.GET("/paslon", crp.GetPaslon)
+	e.GET("/paslon/:id", crp.GetPaslonById)
+
+
 }
