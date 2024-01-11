@@ -16,14 +16,15 @@ func RepositoryArticle(db *gorm.DB) *repository{
 
 func (r *repository) GetArticle() ([]entities.Articles, error) {
 	var articles []entities.Articles
-	err := r.db.Find(&articles).Error
+	// var users []entities.Users
+	err := r.db.Table("articles").Select("articles.title, articles.image, articles.description, articles.author, users.id").Joins("left join users on users.id = articles.id").Find(&articles).Error
 
 	return articles, err
 }
 
 func (r *repository) GetArticleById(id int) (entities.Articles, error) {
 	var articles entities.Articles
-	err := r.db.First(&articles, id).Error
+	err := r.db.Table("articles").Select("articles.title, articles.image, articles.description, articles.author, users.id").Joins("left join users on users.id = articles.id").First(&articles, id).Error
 
 	return articles, err
 }

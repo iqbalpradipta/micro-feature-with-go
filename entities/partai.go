@@ -2,15 +2,14 @@ package entities
 
 import "time"
 
-type Paslon struct {
+type Partai struct {
 	ID			uint		`json:"id" gorm:"primaryKey"`
 	Name		string		`json:"name"`
-	NomorUrut	int			`json:"nomorUrut"`
+	Ketum		string		`json:"ketum"`
 	VisiMisi	string		`json:"visiMisi"`
+	Alamat 		string		`json:"alamat"`
 	Image 		string		`json:"image"`
-	VotePoint 	int			`json:"votePoint"`
 	Created_At  time.Time
 	Updated_At 	time.Time
-	Voting		uint
-	Koalisi		[]Partai	`gorm:"foreignKey:Paslon"`
+	Paslon		uint
 }

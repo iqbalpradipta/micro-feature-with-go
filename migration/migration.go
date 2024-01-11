@@ -9,6 +9,9 @@ func RunMigration()  {
 	err := config.DB.AutoMigrate(
 		&entities.Articles{},
 		&entities.Paslon{},
+		&entities.Partai{},
+		&entities.Users{},
+		&entities.Votters{},
 	)
 
 	if err != nil {

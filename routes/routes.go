@@ -24,5 +24,25 @@ func Routes(e *echo.Group) {
 	e.GET("/paslon", crp.GetPaslon)
 	e.GET("/paslon/:id", crp.GetPaslonById)
 
+	// Partai
+	rpa := service.RepositoryPartai(config.DB)
+	crpa := controller.PartaiController(rpa)
+
+	e.GET("/partai", crpa.GetPartai)
+	e.GET("/partai/:id", crpa.GetPartaiById)
+
+	// Users
+	rpu := service.RepositoryUsers(config.DB)
+	cru := controller.UsersController(rpu)
+
+	e.GET("/users", cru.GetUsers)
+	e.GET("/users/:id", cru.GetUsersById)
+
+	// Users
+	rpv := service.RepositoryVotters(config.DB)
+	crv := controller.VottersController(rpv)
+
+	e.GET("/votters", crv.GetVotters)
+	e.GET("/votters/:id", crv.GetVottersById)
 
 }

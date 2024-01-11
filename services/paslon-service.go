@@ -16,14 +16,14 @@ func RepositoryPaslon(db *gorm.DB) *repository {
 
 func (r *repository) GetPaslon() ([]entities.Paslon, error) {
 	var paslon []entities.Paslon
-	err := r.db.Find(&paslon).Error
+	err := r.db.Preload("Koalisi").Find(&paslon).Error
 	
 	return paslon, err
 }
 
 func (r *repository) GetPaslonById(id int) (entities.Paslon, error) {
 	var paslon entities.Paslon
-	err := r.db.First(&paslon, id).Error
+	err := r.db.Preload("Koalisi").First(&paslon, id).Error
 
 	return paslon, err
 }
